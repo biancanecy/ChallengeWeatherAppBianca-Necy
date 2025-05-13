@@ -40,11 +40,12 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     private void startFetching() {
-        fetchAllForecasts();
-        handler.postDelayed(fetchRunnable, FETCH_INTERVAL);
+        fetchAllForecasts(); // requisição
+        //handler.postDelayed(fetchRunnable, FETCH_INTERVAL); // agendamento
     }
 
-    private void fetchAllForecasts() {
+    public void fetchAllForecasts() {
+        _weatherList.setValue(new ArrayList<>());
         if (Logger.ISLOGABLE) Logger.d(TAG, "fetchAllForecasts()");
         HashMap<String, String> localizations = mRepository.getLocalizations();
         List<Weather> updatedList = new ArrayList<>();
@@ -72,6 +73,11 @@ public class MainViewModel extends AndroidViewModel {
     protected void onCleared() {
         handler.removeCallbacks(fetchRunnable);
         super.onCleared();
+    }
+
+    public void handlerSearchAndClear(){
+        onCleared(); // limpa os agendamentos
+        fetchAllForecasts(); //faz uma nova requisição -> ele agenda
     }
 
     public void retrieveForecast(String latLon, WeatherCallback callback) {
