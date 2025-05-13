@@ -4,5 +4,6 @@
 #Vídeo de apresentação da resolução do challenge:
 ## Demonstração
 
-![Demonstração do app](./Gravação android CESAR.gif)
+(https://raw.githubusercontent.com/SEU-USUARIO/SEU-REPO/main/Gravação%20android%20CESAR.gif)
+
 
